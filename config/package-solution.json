@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-extensions-command-cognitive-client-side-solution",
+    "id": "86b226fb-9cb2-4224-8ee9-c30abd28cbb7",
+    "version": "1.0.0.0",
+    "skipFeatureDeployment": false
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-extensions-command-cognitive.sppkg"
+  }
+}
