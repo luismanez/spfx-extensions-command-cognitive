@@ -1,0 +1,57 @@
+{
+  "@odata.context": "https://inheritscloud.sharepoint.com/_api/v2.0/$metadata#items/$entity",
+  "@odata.type": "#oneDrive.item",
+  "@odata.id": "https://inheritscloud.sharepoint.com/_api/v2.0/drives/b!apE_opGZ5EKBYKZgMz18Pg_4fSlzjhpLr-OmV3B06Em8IZIWf7KrQKa90-MBKRVI/items/0166DNMI54FRJ63XHHIJDLV3ZPWHM3LAOF",
+  "@odata.editLink": "drives/b!apE_opGZ5EKBYKZgMz18Pg_4fSlzjhpLr-OmV3B06Em8IZIWf7KrQKa90-MBKRVI/items/0166DNMI54FRJ63XHHIJDLV3ZPWHM3LAOF",
+  "@content.downloadUrl": "https://inheritscloud.sharepoint.com/sites/ModernTeamSite/_layouts/15/download.aspx?UniqueId=ed532cbc-e7dc-4642-baef-2fb1d9b581c5&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvaW5oZXJpdHNjbG91ZC5zaGFyZXBvaW50LmNvbUBjZDhiMzdkOS01M2RlLTQ2MzEtYTE5Ni0yZDAxZGM4MTQyNDMiLCJpc3MiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAiLCJuYmYiOiIxNTA2NDM1NjQ4IiwiZXhwIjoiMTUwNjQzOTI0OCIsImVuZHBvaW50dXJsIjoiOHZjQzBGbGNodVRRbFBHN1FiSHVuSW0xSUtRVXE3Z2dLYUVyRVNJTVd6Yz0iLCJlbmRwb2ludHVybExlbmd0aCI6IjE0NSIsImlzbG9vcGJhY2siOiJUcnVlIiwiY2lkIjoiWTJFd1lqRmtPV1V0TWpBME9DMDBNREF3TFRneFlUSXROVGhpWTJGaU1XRXpOakkzIiwidmVyIjoiaGFzaGVkcHJvb2Z0b2tlbiIsInNpdGVpZCI6IllUSXpaamt4Tm1FdE9UazVNUzAwTW1VMExUZ3hOakF0WVRZMk1ETXpNMlEzWXpObCIsIm5hbWVpZCI6IjAjLmZ8bWVtYmVyc2hpcHxsdWlzQGluaGVyaXRzY2xvdWQuY29tIiwibmlpIjoibWljcm9zb2Z0LnNoYXJlcG9pbnQiLCJpc3VzZXIiOiJ0cnVlIiwiY2FjaGVrZXkiOiIwaC5mfG1lbWJlcnNoaXB8MTAwMzdmZmVhMDhiOTg2NEBsaXZlLmNvbSIsInR0IjoiMCIsInVzZVBlcnNpc3RlbnRDb29raWUiOiIyIn0.d1l0SW9TNE01azdvKzV5QUhrcmszVHdWdFdjWFBZME5GQnZTaEdVR0tCZz0&ApiVersion=2.0",
+  "createdBy": {
+    "user": {
+      "email": "luis@inheritscloud.com",
+      "id": "51ced5b0-8f60-4d5e-8aa2-35e6d7db6606",
+      "displayName": "Luis Ma\u00f1ez (Inherits Cloud)"
+    }
+  },
+  "createdDateTime": "2017-09-26T10:14:46Z",
+  "eTag": "\"{ED532CBC-E7DC-4642-BAEF-2FB1D9B581C5},2\"",
+  "id": "0166DNMI54FRJ63XHHIJDLV3ZPWHM3LAOF",
+  "lastModifiedBy": {
+    "user": {
+      "email": "luis@inheritscloud.com",
+      "id": "51ced5b0-8f60-4d5e-8aa2-35e6d7db6606",
+      "displayName": "Luis Ma\u00f1ez (Inherits Cloud)"
+    }
+  },
+  "lastModifiedDateTime": "2017-09-26T10:14:46Z",
+  "name": "file0002056219390.jpg",
+  "parentReference": {
+    "driveId": "b!apE_opGZ5EKBYKZgMz18Pg_4fSlzjhpLr-OmV3B06Em8IZIWf7KrQKa90-MBKRVI",
+    "driveType": "documentLibrary",
+    "id": "0166DNMI56Y2GOVW7725BZO354PWSELRRZ",
+    "path": "/drives/b!apE_opGZ5EKBYKZgMz18Pg_4fSlzjhpLr-OmV3B06Em8IZIWf7KrQKa90-MBKRVI/root:"
+  },
+  "webUrl": "https://inheritscloud.sharepoint.com/sites/ModernTeamSite/StockImages/file0002056219390.jpg",
+  "cTag": "\"c:{ED532CBC-E7DC-4642-BAEF-2FB1D9B581C5},2\"",
+  "file": {
+    "hashes": {
+      "quickXorHash": "GAOe10NEptvJed7Tm+WTH+2XKcU="
+    },
+    "mimeType": "image/jpeg"
+  },
+  "fileSystemInfo": {
+    "createdDateTime": "2017-09-26T10:14:46Z",
+    "lastModifiedDateTime": "2017-09-26T10:14:46Z"
+  },
+  "image": {},
+  "size": 282595
+}
+
+
+POST https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Adult,Categories,Color,Description,Faces,ImageType,Tags&subscription-key=4c9fc69a9c7b41d9911b4e4900340b39 HTTP/1.1
+Content-Type: application/json
+Authorization: Basic ZTkwNTE2ZmQ4NThlNDVjMmFhNDMzMjRlZjBlOThlN2E=
+Host: westus.api.cognitive.microsoft.com
+Content-Length: 1115
+Expect: 100-continue
+Connection: Keep-Alive
+
+{"url":"https://inheritscloud.sharepoint.com/sites/ModernTeamSite/_layouts/15/download.aspx?UniqueId=ed532cbc-e7dc-4642-baef-2fb1d9b581c5&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvaW5oZXJpdHNjbG91ZC5zaGFyZXBvaW50LmNvbUBjZDhiMzdkOS01M2RlLTQ2MzEtYTE5Ni0yZDAxZGM4MTQyNDMiLCJpc3MiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAiLCJuYmYiOiIxNTA2NDM1NjQ4IiwiZXhwIjoiMTUwNjQzOTI0OCIsImVuZHBvaW50dXJsIjoiOHZjQzBGbGNodVRRbFBHN1FiSHVuSW0xSUtRVXE3Z2dLYUVyRVNJTVd6Yz0iLCJlbmRwb2ludHVybExlbmd0aCI6IjE0NSIsImlzbG9vcGJhY2siOiJUcnVlIiwiY2lkIjoiWTJFd1lqRmtPV1V0TWpBME9DMDBNREF3TFRneFlUSXROVGhpWTJGaU1XRXpOakkzIiwidmVyIjoiaGFzaGVkcHJvb2Z0b2tlbiIsInNpdGVpZCI6IllUSXpaamt4Tm1FdE9UazVNUzAwTW1VMExUZ3hOakF0WVRZMk1ETXpNMlEzWXpObCIsIm5hbWVpZCI6IjAjLmZ8bWVtYmVyc2hpcHxsdWlzQGluaGVyaXRzY2xvdWQuY29tIiwibmlpIjoibWljcm9zb2Z0LnNoYXJlcG9pbnQiLCJpc3VzZXIiOiJ0cnVlIiwiY2FjaGVrZXkiOiIwaC5mfG1lbWJlcnNoaXB8MTAwMzdmZmVhMDhiOTg2NEBsaXZlLmNvbSIsInR0IjoiMCIsInVzZVBlcnNpc3RlbnRDb29raWUiOiIyIn0.d1l0SW9TNE01azdvKzV5QUhrcmszVHdWdFdjWFBZME5GQnZTaEdVR0tCZz0&ApiVersion=2.0"}
