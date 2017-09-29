@@ -23,83 +23,95 @@ export interface IImageCognitiveMetadataCommandSetProperties {
 }
 
 const LOG_SOURCE: string = 'ImageCognitiveMetadataCommandSet';
+const GET_TAGS_COMMAND: string = "GET_TAGS_COMMAND";
 
 export default class ImageCognitiveMetadataCommandSet extends BaseListViewCommandSet<IImageCognitiveMetadataCommandSetProperties> {
 
-  private cognitiveServicesKey: string = "[YOUR_KEY_HERE]";
-  private cognitiveServicesVisionUrl: string = `https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Adult,Categories,Color,Description,Faces,ImageType,Tags&subscription-key=${this.cognitiveServicesKey}`;
-
+  private cognitiveServicesKey: string = "COGNITIVE_SERVICES_API_KEY";
+  private cognitiveServicesVisionUrl: string = `https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Adult,Categories,Color,Description,Faces,ImageType,Tags`;
+  
   @override
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, 'Initialized ImageCognitiveMetadataCommandSet');
+
     return Promise.resolve();
   }
 
   @override
   public onListViewUpdated(event: IListViewCommandSetListViewUpdatedParameters): void {
-    const compareOneCommand: Command = this.tryGetCommand('COMMAND_1');
-    if (compareOneCommand) {
-      // This command should be hidden unless exactly one row is selected.
-      compareOneCommand.visible = event.selectedRows.length === 1;
-    }
+    this._enableCommandWhenItemIsSelected(event);
   }
 
   @override
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
     switch (event.itemId) {
-      case 'COMMAND_1':        
+      case GET_TAGS_COMMAND:        
 
-        Log.info(LOG_SOURCE, 'COMMAND_1');
-        console.log(event.selectedRows[0]);        
+        Log.info(LOG_SOURCE, GET_TAGS_COMMAND); 
 
-        const kk: ISPHttpClientOptions = { };
         const imageInfoUrl = event.selectedRows[0].getValueByName('.spItemUrl') + '&$select=@content.downloadUrl';
-        this.context.spHttpClient.fetch(imageInfoUrl, SPHttpClient.configurations.v1, kk).then((response: SPHttpClientResponse) => {
-            console.log(`Status text: ${response.statusText}`);
-            response.json().then((responseJSON: any) => {
-            console.log(responseJSON);
-            const imageDownloadUrl: string = responseJSON['@content.downloadUrl'];
-            console.log(imageDownloadUrl);
 
-            const requestHeaders: Headers = new Headers();
-            requestHeaders.append('Content-type', 'application/json');
-            requestHeaders.append('Cache-Control', 'no-cache');
-    
-            const body: string = JSON.stringify({
-              'Url': imageDownloadUrl
-            });
-            const httpOptions: IHttpClientOptions = {          
-              body: body,
-              headers: requestHeaders
-            }; 
-
-            this.context.httpClient.post(this.cognitiveServicesVisionUrl, 
-            HttpClient.configurations.v1, 
-            httpOptions).then((cognitiveResponse: HttpClientResponse) => {
-              // Access properties of the response object. 
-              console.log(`Status code: ${cognitiveResponse.status}`);
-              console.log(`Status text: ${cognitiveResponse.statusText}`);
-
-              //response.json() returns a promise so you get access to the json in the resolve callback.
-              cognitiveResponse.json().then((cognitiveResponseJSON: any) => {
-                let tagsInfo: string = '';
-                console.log(cognitiveResponseJSON);
-                const tags: any = cognitiveResponseJSON.tags;
-                tags.forEach(element => {
-                  tagsInfo = tagsInfo.concat(element.name, ", ");
-                });
-
-                Dialog.alert(tagsInfo);
-              }).catch((error: any) => {
-                console.log(error);
-                Dialog.alert(JSON.stringify(error));
-              });
-            });
+        this._getTagsForImage(imageInfoUrl)
+          .then((tags: any) => {
+            console.log(tags);
+            Dialog.alert(tags.map(tag => { return tag.name; }).join(', '));
+          })
+          .catch(error => { 
+            console.log(error);
+            Dialog.alert(`Error getting data. Ex: ${JSON.stringify(error)}`);
           });
-        });        
+          
         break;
       default:
         throw new Error('Unknown command');
     }
+  }    
+
+  private _enableCommandWhenItemIsSelected(event: IListViewCommandSetListViewUpdatedParameters): void {
+    const compareOneCommand: Command = this.tryGetCommand(GET_TAGS_COMMAND);
+    if (compareOneCommand) {
+      compareOneCommand.visible = event.selectedRows.length === 1;
+    }
   }
+
+  private async _getDownloadUrl(imageInfoUrl: string): Promise<string> {
+    const imageInfoOptions: ISPHttpClientOptions = { };
+    const response: SPHttpClientResponse = await this.context.spHttpClient.fetch(imageInfoUrl, SPHttpClient.configurations.v1, imageInfoOptions);
+    const responseJson: any = await response.json();
+    const imageDownloadUrl: string = responseJson['@content.downloadUrl'];
+    
+    return imageDownloadUrl;
+  }  
+
+  private async _getTagsForImage(imageInfoUrl: string): Promise<string[]> {
+    const downloadUrl: string = await this._getDownloadUrl(imageInfoUrl);
+    const httpOptions: IHttpClientOptions = this._prepareHttpOptionsForVisionApi(downloadUrl);
+    const cognitiveResponse: HttpClientResponse = await this.context.httpClient.post(this.cognitiveServicesVisionUrl, HttpClient.configurations.v1, httpOptions);
+    const cognitiveResponseJSON: any = await cognitiveResponse.json();
+    const tags: any = cognitiveResponseJSON.tags;
+    return tags;
+  }
+
+  private _prepareHttpOptionsForVisionApi(imageDownloadUrl: string): IHttpClientOptions {
+    const body: string = JSON.stringify({
+      'Url': imageDownloadUrl
+    });
+
+    const httpOptions: IHttpClientOptions = {          
+      body: body,
+      headers: this._prepareHeadersForVisionApi()
+    }; 
+
+    return httpOptions;
+  }
+
+  private _prepareHeadersForVisionApi(): Headers {
+    const requestHeaders: Headers = new Headers();
+    requestHeaders.append('Content-type', 'application/json');
+    requestHeaders.append('Cache-Control', 'no-cache');
+    requestHeaders.append('Ocp-Apim-Subscription-Key', this.cognitiveServicesKey);
+
+    return requestHeaders;
+  }
+
 }

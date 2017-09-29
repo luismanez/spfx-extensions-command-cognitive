@@ -1,6 +1,5 @@
 declare interface IImageCognitiveMetadataCommandSetStrings {
-  Command1: string;
-  Command2: string;
+  GetTagsCommand: string;
 }
 
 declare module 'ImageCognitiveMetadataCommandSetStrings' {
