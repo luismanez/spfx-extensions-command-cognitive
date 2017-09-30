@@ -7,7 +7,7 @@ Custom Command Set that gets metadata information from MS Cognitive Services Vis
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.1.1](https://img.shields.io/badge/SPFx-1.1.1-green.svg)
+![SPFx v1.3.0](https://img.shields.io/badge/SPFx-1.1.1-green.svg)
 
 ## Applies to
 
