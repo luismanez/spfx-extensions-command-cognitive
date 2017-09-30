@@ -1,0 +1,20 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "image-cognitive-metadata-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/imageCognitiveMetadata/ImageCognitiveMetadataCommandSet.js",
+          "manifest": "./src/extensions/imageCognitiveMetadata/ImageCognitiveMetadataCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    //"jquery": "https://code.jquery.com/jquery-2.2.4.min.js"
+  },
+  "localizedResources": {
+    "ImageCognitiveMetadataCommandSetStrings": "lib/extensions/imageCognitiveMetadata/loc/{locale}.js"
+  }
+}

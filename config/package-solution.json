@@ -1,0 +1,24 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-extensions-command-cognitive-client-side-solution",
+    "id": "2408952d-6a70-4fbe-b18f-4871276ece8a",
+    "version": "1.0.0.0",
+    "features": [
+      {
+        "title": "Application Extension - Deployment of custom action.",
+        "description": "Deploys a custom action with ClientSideComponentId association",
+        "id": "74cd1208-6f79-4b73-91d2-af1739b1ccc1",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-extensions-command-cognitive.sppkg"
+  }
+}
