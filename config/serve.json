@@ -26,6 +26,17 @@
           }
         }
       }
+    },
+    "sentimentAnalytics": {
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "fieldCustomizers": {
+        "InternalFieldName": {
+          "id": "7a2d9bc5-5a93-4953-b3f9-e78918274f8e",
+          "properties": {
+            "sampleText": "Value"
+          }
+        }
+      }
     }
   }
 }

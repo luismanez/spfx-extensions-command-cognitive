@@ -9,12 +9,19 @@
           "manifest": "./src/extensions/imageCognitiveMetadata/ImageCognitiveMetadataCommandSet.manifest.json"
         }
       ]
+    },
+    "sentiment-analytics-field-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/sentimentAnalytics/SentimentAnalyticsFieldCustomizer.js",
+          "manifest": "./src/extensions/sentimentAnalytics/SentimentAnalyticsFieldCustomizer.manifest.json"
+        }
+      ]
     }
   },
-  "externals": {
-    //"jquery": "https://code.jquery.com/jquery-2.2.4.min.js"
-  },
+  "externals": {},
   "localizedResources": {
-    "ImageCognitiveMetadataCommandSetStrings": "lib/extensions/imageCognitiveMetadata/loc/{locale}.js"
+    "ImageCognitiveMetadataCommandSetStrings": "lib/extensions/imageCognitiveMetadata/loc/{locale}.js",
+    "SentimentAnalyticsFieldCustomizerStrings": "lib/extensions/sentimentAnalytics/loc/{locale}.js"
   }
 }
